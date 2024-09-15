@@ -44,6 +44,17 @@ if process_url_clicked:
     main_placeholder.text("Embedding Vector Started Building...✅✅✅")
     time.sleep(2)
 
+    def generate_response(prompt):
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # Use the correct model name
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.9,
+            max_tokens=500
+        
+        )
+        return response.choices[0].message['content']
+    
+
     class CustomChain(RetrievalQAWithSourcesChain):
         def _call(self, inputs, return_only_outputs=False):
             question = inputs["question"]
