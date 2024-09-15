@@ -46,10 +46,11 @@ if process_url_clicked:
 
     class CustomChain(RetrievalQAWithSourcesChain):
         def _call(self, inputs, return_only_outputs=False):
-        question = inputs["question"]
+            question = inputs["question"]
         # Generate the response using the chat model
-        response = generate_response(question)
-        return {"answer": response}
+            response = generate_response(question)
+            return {"answer": response}
+        
 
     # Save the FAISS index to a pickle file
     with open(file_path, "wb") as f:
