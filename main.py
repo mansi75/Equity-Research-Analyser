@@ -80,7 +80,7 @@ if query:
             st.header("Answer")
             st.write(result["answer"])
 
-            Display sources, if available
+            #Display sources, if available
             sources = result.get("sources", "")
             if sources:
                 st.subheader("Sources:")
