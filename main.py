@@ -16,7 +16,7 @@ st.title("EquityBot: News Research Tool 📈")
 st.sidebar.title("news Article URLs")
 
 urls = []
-for i in range(1):
+for i in range(3):
     url = st.sidebar.text_input(f"URL {i+1}")
     urls.append(url)
 
@@ -34,7 +34,7 @@ if process_url_clicked:
     # split data
     text_splitter = RecursiveCharacterTextSplitter(
         separators=['\n\n', '\n', '.', ','],
-        chunk_size=1000
+        chunk_size=3000
     )
     main_placeholder.text("Text Splitter...Started...✅✅✅")
     docs = text_splitter.split_documents(data)
