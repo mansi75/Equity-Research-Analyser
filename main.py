@@ -61,7 +61,7 @@ if process_url_clicked:
             question = inputs["question"]
         # Generate the response using the chat model
             response = generate_response(question)
-            return {"answer": response}
+            return {"answer": response, "sources": [] }
         
 
     # Save the FAISS index to a pickle file
@@ -80,10 +80,10 @@ if query:
             st.header("Answer")
             st.write(result["answer"])
 
-            # Display sources, if available
-            # sources = result.get("sources", "")
-            # if sources:
-            #     st.subheader("Sources:")
-            #     sources_list = sources.split("\n")  # Split the sources by newline
-            #     for source in sources_list:
-            #         st.write(source)
+            Display sources, if available
+            sources = result.get("sources", "")
+            if sources:
+                st.subheader("Sources:")
+                sources_list = sources.split("\n")  # Split the sources by newline
+                for source in sources_list:
+                    st.write(source)
