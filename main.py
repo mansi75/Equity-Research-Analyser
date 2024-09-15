@@ -45,7 +45,7 @@ if process_url_clicked:
     time.sleep(2)
 
     class CustomChain(RetrievalQAWithSourcesChain):
-    def _call(self, inputs, return_only_outputs=False):
+        def _call(self, inputs, return_only_outputs=False):
         question = inputs["question"]
         # Generate the response using the chat model
         response = generate_response(question)
