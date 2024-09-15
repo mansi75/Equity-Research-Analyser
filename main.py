@@ -34,7 +34,7 @@ def generate_response(prompt):
         temperature=0.9,
         max_tokens=500
     )
-    return response.choices[0].message['conten
+    return response.choices[0].message['content']
 
 if process_url_clicked:
     # load data
