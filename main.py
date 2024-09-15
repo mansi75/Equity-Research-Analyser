@@ -24,7 +24,17 @@ process_url_clicked = st.sidebar.button("Process URLs")
 file_path = "faiss_store_openai.pkl"
 
 main_placeholder = st.empty()
-llm = OpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0.9, max_tokens=500)
+#llm = OpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0.9, max_tokens=500)
+def generate_response(prompt):
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # Ensure correct model name
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.9,
+        max_tokens=500
+    )
+    return response.choices[0].message['conten
 
 if process_url_clicked:
     # load data
@@ -34,7 +44,7 @@ if process_url_clicked:
     # split data
     text_splitter = RecursiveCharacterTextSplitter(
         separators=['\n\n', '\n', '.', ','],
-        chunk_size=3000
+        chunk_size=1000
     )
     main_placeholder.text("Text Splitter...Started...✅✅✅")
     docs = text_splitter.split_documents(data)
@@ -53,7 +63,7 @@ if query:
     if os.path.exists(file_path):
         with open(file_path, "rb") as f:
             vectorstore = pickle.load(f)
-            chain = RetrievalQAWithSourcesChain.from_llm(llm=llm, retriever=vectorstore.as_retriever())
+            chain = RetrievalQAWithSourcesChain.from_llm(llm=generate_response, retriever=vectorstore.as_retriever())
             result = chain({"question": query}, return_only_outputs=True)
             # result will be a dictionary of this format --> {"answer": "", "sources": [] }
             st.header("Answer")
