@@ -61,7 +61,7 @@ def _call(self, inputs, return_only_outputs=False):
 question = inputs["question"]
 # Generate the response using the chat model
 response = generate_response(question)
-return {"answer": response, "sources": [] }
+return {"answer": response}
 
 
 # Save the FAISS index to a pickle file
@@ -80,8 +80,7 @@ result = chain({"question": query}, return_only_outputs=True)
 st.header("Answer")
 st.write(result["answer"])
 
-            Display sources, if available
-            #Display sources, if available
+# Display sources, if available
 sources = result.get("sources", "")
 if sources:
 st.subheader("Sources:")
