@@ -60,7 +60,7 @@ if process_url_clicked:
             question = inputs["question"]
         # Generate the response using the chat model
             response = generate_response(question)
-            return {"answer": response}
+            return {"answer": response, "sources": [] }
 
 
     # Save the FAISS index to a pickle file
