@@ -1,6 +1,6 @@
 # Equity-Research-Analyser
 
-Equity researchers can input article URLs and ask questions to receive actionable insights related to the stock market and financial domain, enhancing research efficiency and decision-making.
+In Equity-Research-Analyser, equity researchers can input article URLs and ask questions to receive actionable insights related to the stock market and financial domain, enhancing research efficiency and decision-making.
 
 ## Libraries used
 
